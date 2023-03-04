@@ -1,0 +1,2 @@
+# kafka-snippets
+Kafka samples
