@@ -90,3 +90,9 @@
     pub-sub: no assumptions are made about the number and activity of consumers.
     message queue: Recipient of the message is clearly defined is expected to process it only once.
     
+### Key and key.serializer in Producer properties.
+    Key is primarily used for partitioning. Optional. The records having the same keys will end up in 
+    the same partition.
+    
+    key.serializer property is the code responsible for converting Java objects into raw bytes.
+    
