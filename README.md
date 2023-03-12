@@ -1,6 +1,6 @@
 ### Kafka
-    Kafka is a distributed messaging system providing fast, highly scalable and redundant messaging through 
-    a pub-sub model.
+    Kafka is a distributed messaging system providing fast, highly scalable and redundant messaging 
+    through a pub-sub model.
  
     Kafka is more of a publish/subscribe product, though it is still possible to use it as a queue.
     
@@ -8,41 +8,41 @@
     
     Kafka stores every message on disk, as log.
     
-    When Kafka removes messages, it always happens in batches, and it's completely detached from consumers 
-    activity. Instead of checking which message has been consumed, Kafka keeps track of where in the log the 
-    consumer is, and it has no impact on message retention
+    When Kafka removes messages, it always happens in batches, and it's completely detached from 
+    consumers activity. Instead of checking which message has been consumed, Kafka keeps track of 
+    where in the log the consumer is, and it has no impact on message retention
 ### ZooKeeper snd Kafka Broker
     ZooKeeper is a coordination service. indispensable in high‑availability distributed systems. 
     consensus between the servers.
     
-    A broker is a server that manages topics, messages persistence and lifetime, and to which producers and 
-    consumers connect.
+    A broker is a server that manages topics, messages persistence and lifetime, and to which 
+    producers and consumers connect.
     
 ### Kafka vs IBM MQ
-    A scenario where Kafka should be used instead of IBM MQ is when you need to handle large volumes of  
-    real-time data streams with low latency, and where data loss is acceptable (since Kafka does not provide 
-    guaranteed message delivery - is this true?). Conversely, if you need to ensure reliable and secure 
-    message delivery between applications and systems, and you cannot afford to lose messages, IBM MQ is the 
-    better choice.
+    A scenario where Kafka should be used instead of IBM MQ is when you need to handle large 
+    volumes of real-time data streams with low latency, and where data loss is acceptable (since 
+    Kafka does not provide guaranteed message delivery - is this true?). Conversely, if you need 
+    to ensure reliable and secure message delivery between applications and systems, and you 
+    cannot afford to lose messages, IBM MQ is the better choice.
     
 ### Kafka key concepts
-    A partition is a totally ordered sequence of records. A record has an offset, and it may have a 
-    key and a value; both are byte arrays and both are optional.
+    A partition is a totally ordered sequence of records. A record has an offset, and it may have 
+    a key and a value; both are byte arrays and both are optional.
     
-    Multiple producers may publish to the same partition, but there is no recognised ordering across 
-    producers
+    Multiple producers may publish to the same partition, but there is no recognised ordering 
+    across producers
     
     A topic may have one or more partitions, and a partition must be a part of exactly one topic.
     The partitions within a topic are mutually independent.
     Certain records may be ordered in relation to one another (in the same partition) while being
     unordered with respect to certain other records (in different partitions).
     
-    When publishing, producers can specify that records must be mutually ordered by assigning them the 
-    same key. In other words, records that share a key will be published on the same partition.
+    When publishing, producers can specify that records must be mutually ordered by assigning them
+    the same key. In other words, records that share a key will be published on the same partition.
     (This is critical where related messages must be processed sequentially.)
     
-    Consumers subscribe to a topic as part of a consumer group. A consumer group balances the partition 
-    load among its members.
+    Consumers subscribe to a topic as part of a consumer group. A consumer group balances the 
+    partition load among its members.
     Kafka will never assign a partition to multiple consumers in the same group.
     (This guarantees that the same message is comsumed only once.)
         
