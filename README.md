@@ -114,4 +114,8 @@
     
     log.retention.bytes: specifies maximum space that the log for the whole partition should occupy.
     log.retention.ms. specifies maximum time for which a segment should be kept after closing.
+### Cluster Sizing
+    Dsik size/throughput
+    Network throughput
     
+### Serialization
