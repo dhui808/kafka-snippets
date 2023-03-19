@@ -107,3 +107,11 @@
     If the number of in‑sync replicas falls below the target, the leader will refuse to write messages 
     from producers.
     
+### Data Retention
+    log.segment.bytes
+    log.segment.ms
+    A segment is closed when it reaches a predefined size or configured time elapses.
+    
+    log.retention.bytes: specifies maximum space that the log for the whole partition should occupy.
+    log.retention.ms. specifies maximum time for which a segment should be kept after closing.
+    
