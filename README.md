@@ -121,3 +121,6 @@
     broker. Then, see if the disk and network interfaces will handle it.
     
 ### Serialization
+    Protobuf (Google)
+    Avro (Apache)
+    
