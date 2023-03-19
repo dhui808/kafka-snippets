@@ -96,3 +96,11 @@
     
     key.serializer property is the code responsible for converting Java objects into raw bytes.
     
+### Kafka Broker replication
+    replication factor: 
+        none: no ack is needed
+        1: ack is needed (default value)
+        all: only after all replicas write the message, the partition leader (broker) sends ack to the
+        producer.
+        
+        
