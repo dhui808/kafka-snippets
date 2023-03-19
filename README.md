@@ -121,6 +121,9 @@
     broker. Then, see if the disk and network interfaces will handle it.
     
 ### Serialization
+    Desired data exchange format:compact, fast, language‑agnostic, easy accommodation of schema 
+    evolution
+    
     Protobuf (Google)
     Avro (Apache)
     
