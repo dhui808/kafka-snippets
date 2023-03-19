@@ -103,4 +103,7 @@
         all: only after all replicas write the message, the partition leader (broker) sends ack to the
         producer.
         
-        
+    main.insync.replicas: define the number of minimum replicas that must be in sync.
+    If the number of in‑sync replicas falls below the target, the leader will refuse to write messages 
+    from producers.
+    
