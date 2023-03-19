@@ -117,5 +117,7 @@
 ### Cluster Sizing
     Dsik size/throughput
     Network throughput
+    Take a rough estimate of how much data will be coming in and how much will be going out for each 
+    broker. Then, see if the disk and network interfaces will handle it.
     
 ### Serialization
