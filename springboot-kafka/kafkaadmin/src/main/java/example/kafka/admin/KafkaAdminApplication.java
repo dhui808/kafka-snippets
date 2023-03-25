@@ -17,7 +17,7 @@ public class KafkaAdminApplication {
 
         printAllTopics(admin);
         
-        NewTopic newTopic = new NewTopic("random-number", 2, (short)1);
+        NewTopic newTopic = new NewTopic("random-number", 3, (short)1);
         admin.createTopics(List.of(newTopic))
                 .all()
                 .get();

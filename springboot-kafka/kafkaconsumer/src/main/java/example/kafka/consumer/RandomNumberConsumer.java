@@ -26,4 +26,15 @@ public class RandomNumberConsumer {
             "%s consumed %s partition %d", hostName, message, meta.partition()));
     Thread.sleep(processingTime);
   }
+  
+  @KafkaListener(topicPartitions =
+      { @TopicPartition(topic = "random-number", partitions = { "2"})
+      })
+  public void consumerPartition2(String message, ConsumerRecordMetadata meta) throws UnknownHostException, InterruptedException {
+    String hostName = InetAddress.getLocalHost().getHostName();
+    System.out.println(
+        String.format(
+            "%s consumerPartition2 consumed %s partition %d", hostName, message, meta.partition()));
+    Thread.sleep(processingTime);
+  }
 }
