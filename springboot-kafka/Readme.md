@@ -5,7 +5,9 @@
 	mvn exec:java
 ### Run producer
 	mvn exec:java
-### Run comsumer
+### Run consumer
+	mvn exec:java
+### Run consumer2
 	mvn exec:java
 ### Stop Kafka 
 	docker-compose down

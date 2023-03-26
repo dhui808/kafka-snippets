@@ -9,10 +9,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>example.kafka</groupId>
-	<artifactId>kafkaconsumer</artifactId>
+	<artifactId>kafkaconsumer2</artifactId>
 	<version>0.0.1</version>
-	<name>kafkaconsumer</name>
-	<description>Demo project for Spring Boot Kafka Consumer</description>
+	<name>kafkaconsumer2</name>
+	<description>Demo project for Spring Boot Kafka Consumer 2</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

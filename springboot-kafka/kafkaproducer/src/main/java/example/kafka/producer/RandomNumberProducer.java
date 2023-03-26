@@ -16,10 +16,11 @@ public class RandomNumberProducer {
   private static final int MIN = 10;
   private static final int MAX = 100_000;
   private static final String topic = "random-number";
+  private static final String mytopic = "mytopic";
   
   @Autowired private KafkaTemplate<String, Object> kafkaTemplate;
 
-  @Scheduled(fixedRate = 2000)
+  @Scheduled(fixedRate = 1000)
   public void produce() throws UnknownHostException {
     int random = ThreadLocalRandom.current().nextInt(MIN, MAX);
     int partition = random % 2 == 0? 0 : 1;
@@ -32,7 +33,7 @@ public class RandomNumberProducer {
     if (partition < 2 ) {
     	kafkaTemplate.send(topic, partition, "mykey-" + partition, String.valueOf(random));
     } else {
-    	kafkaTemplate.send(topic, partition, "mykey-" + partition, bar);
+    	kafkaTemplate.send(mytopic, 0, "mykey-" + partition, bar);
     }
     // just for logging
     String hostName = InetAddress.getLocalHost().getHostName();

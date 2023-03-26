@@ -10,6 +10,7 @@
 		<module>kafkaadmin</module>
 		<module>kafkaproducer</module>
 		<module>kafkaconsumer</module>
+		<module>kafkaconsumer2</module>
 	</modules>
 	<build>
 		<plugins>

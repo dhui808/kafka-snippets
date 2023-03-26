@@ -26,4 +26,13 @@ public class BarConsumer {
             "%s consumed %s partition %d", hostName, bar, meta.partition()));
     Thread.sleep(processingTime);
   }
+  
+  @KafkaHandler
+  public void consumerPartition2(String bar, ConsumerRecordMetadata meta) throws UnknownHostException, InterruptedException {
+    String hostName = InetAddress.getLocalHost().getHostName();
+    System.out.println(
+        String.format(
+            "%s consumed %s partition %d", hostName, bar, meta.partition()));
+    Thread.sleep(processingTime);
+  }
 }
