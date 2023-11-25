@@ -26,6 +26,9 @@
     cannot afford to lose messages, IBM MQ is the better choice.
     
 ### Kafka key concepts
+    Each topic split into multiple pieces and stored across multiple machines. These chunks are 
+    called partitions.
+    
     A partition is a totally ordered sequence of records. A record has an offset, and it may have 
     a key and a value; both are byte arrays and both are optional.
     
