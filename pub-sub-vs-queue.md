@@ -9,3 +9,4 @@
  	If you need to ensure that each message is processed by exactly one consumer, or you require FIFO ordering, then 
   	message queues are likely the way to go.
 
+	Kafka supports publish/subscribe and message queue patterns.
