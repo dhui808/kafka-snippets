@@ -1,4 +1,4 @@
-### Pub-Sub Pattern vs Message Queue Pattern
+### Publish/Subscribe Pattern vs Message Queue Pattern
 ![Pub-Sub](images/pub-sub.png)  
 
 ![Queue](images/queue.png)  
