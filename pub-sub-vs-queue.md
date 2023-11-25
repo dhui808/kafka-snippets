@@ -15,3 +15,4 @@
 	Lack of per‑message lifecycle management. When Kafka removes messages, it always happens in batches, and it's completely 
  	detached from consumers activity.
   
+	Kafka allows automatic creation of topics
