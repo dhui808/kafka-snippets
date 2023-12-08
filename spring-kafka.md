@@ -28,4 +28,5 @@
 	}
 
  	Issue: if initialOffset is not specified, the customer does not receive the very first message!
-	
+	But if you specify initialOffset, every time the application starts, the consumer reads from
+   	the beginning of the topic.
