@@ -47,7 +47,7 @@
     Consumers subscribe to a topic as part of a consumer group. A consumer group balances the 
     partition load among its members.
     Kafka will never assign a partition to multiple consumers in the same group.
-    (This guarantees that the same message is comsumed only once.)
+    (This guarantees that the same message is consumed only once.)
         
     The act of consuming a record does not remove it. A consumer internally maintains an offset that 
     points to the next record in a partition, advancing the offset for every successive read. At some 
@@ -129,4 +129,11 @@
     
     Protobuf (Google)
     Avro (Apache)
+    
+### Producer
+    Can specify topic, partition and key. Records that share a key will be published on the same partition.
+
+### Consumer
+    Can specify topic, partition and group.
+    Kafka will never assign a partition to multiple consumers in the same group.
     
