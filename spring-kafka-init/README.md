@@ -42,9 +42,13 @@
 	docker-compose exec kafka kafka-topics --create --topic partitioned --partitions 6 --replication-factor 1 --bootstrap-server kafka:9092
 	docker-compose exec kafka kafka-topics --create --topic filtered --partitions 1 --replication-factor 1 --bootstrap-server kafka:9092
 	docker-compose exec kafka kafka-topics --create --topic greeting --partitions 1 --replication-factor 1 --bootstrap-server kafka:9092
+	docker-compose exec kafka kafka-topics --create --topic multitype --partitions 1 --replication-factor 1 --bootstrap-server kafka:9092
 	
 	docker-compose exec kafka kafka-topics --list --bootstrap-server kafka:9092
 	
 ### Another way of creating Kafka Topics
 	Using KafkaTopicConfig.java
-	   
+
+### Note
+	The topic is created with 1 partition after running Spring Boot application, though messages are not sent/received.  So the application works next time if there is only 1 partition is needed per topic.
+	 	   
