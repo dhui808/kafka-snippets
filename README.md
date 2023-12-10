@@ -132,7 +132,12 @@
     
 ### Producer
     Can specify topic, partition and key. Records that share a key will be published on the same partition.
-
+    
+    A message is not published to multiple partitions within a topic simultaneously.
+    
+    A message can be replicated across multiple partitions for fault tolerance and high availability. The 
+    replication factor determines the number of replicas for each partition.
+    
 ### Consumer
     Can specify topic, partition and group.
     Kafka will never assign a partition to multiple consumers in the same group.
