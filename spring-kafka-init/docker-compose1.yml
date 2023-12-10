@@ -37,7 +37,7 @@ services:
 
       echo -e 'Creating kafka topics'
       kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic mytopic --replication-factor 1 --partitions 1
-      kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic partitioned --replication-factor 1 --partitions 1
+      kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic partitioned --replication-factor 1 --partitions 6
       kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic filtered --replication-factor 1 --partitions 1
       kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic greeting --replication-factor 1 --partitions 1
 

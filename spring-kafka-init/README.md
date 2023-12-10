@@ -37,10 +37,13 @@
 	
 ### Start Kafka Docker (using docker-compose2.yml)
 	Create Kafka Topic from Docker Command line instead of using init-kafka service in docker-compose
+	
 	docker-compose exec kafka kafka-topics --create --topic mytopic --partitions 1 --replication-factor 1 --bootstrap-server kafka:9092
-	docker-compose exec kafka kafka-topics --create --topic partitioned --partitions 1 --replication-factor 1 --bootstrap-server kafka:9092
+	docker-compose exec kafka kafka-topics --create --topic partitioned --partitions 6 --replication-factor 1 --bootstrap-server kafka:9092
 	docker-compose exec kafka kafka-topics --create --topic filtered --partitions 1 --replication-factor 1 --bootstrap-server kafka:9092
 	docker-compose exec kafka kafka-topics --create --topic greeting --partitions 1 --replication-factor 1 --bootstrap-server kafka:9092
+	
+	docker-compose exec kafka kafka-topics --list --bootstrap-server kafka:9092
 	
 ### Another way of creating Kafka Topics
 	Using KafkaTopicConfig.java
