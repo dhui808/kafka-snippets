@@ -141,4 +141,6 @@
 ### Consumer
     Can specify topic, partition and group.
     Kafka will never assign a partition to multiple consumers in the same group.
+    Kafka Consumer will receive all messages from topic. But if there is any custom message type (MyMessage) 
+    that only needs to be consumed then it can be filtered in Deserializer class. 
     
