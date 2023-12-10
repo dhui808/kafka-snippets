@@ -1,0 +1,28 @@
+### Start Docker Kafka
+	Start Docker Desktop
+	
+	docker-compose up -d
+
+### Verify Kafka CLuster
+	docker-compose ps
+	
+### Scripts that init Kafka
+	  init-kafka:
+		image: confluentinc/cp-kafka:7.4.1
+		depends_on:
+		  - kafka
+		entrypoint: [ '/bin/sh', '-c' ]
+		command: |
+		  "
+		  # blocks until kafka is reachable
+		  kafka-topics --bootstrap-server kafka:29092 --list
+
+		  echo -e 'Creating kafka topics'
+		  kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic mytopic --replication-factor 1 --partitions 1
+		  kafka-topics --bootstrap-server kafka:29092 --create --if-not-exists --topic my-topic-2 --replication-factor 1 --partitions 1
+
+		  echo -e 'Successfully created the following topics:'
+		  kafka-topics --bootstrap-server kafka:29092 --list
+		  "
+
+### Start Kafka application
