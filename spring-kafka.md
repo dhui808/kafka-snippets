@@ -30,3 +30,18 @@
  	Issue: if initialOffset is not specified, the customer does not receive the very first message!
 	But if you specify initialOffset, every time the application starts, the consumer reads from
    	the beginning of the topic.
+###  SpEL expressions #{__listener.topic}
+	public class Listener {
+	    private final String topic;
+	    public Listener(String topic) {
+	        this.topic = topic;
+	    }
+	    @KafkaListener(topics = "#{__listener.topic}",
+	        groupId = "#{__listener.topic}.group")
+	    public void listen(...) {
+	        ...
+	    }
+	    public String getTopic() {
+	        return this.topic;
+	    }
+	}
