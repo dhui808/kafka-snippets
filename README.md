@@ -144,3 +144,5 @@
     Kafka Consumer will receive all messages from topic. But if there is any custom message type (MyMessage) 
     that only needs to be consumed then it can be filtered in Deserializer class. 
     
+### Group Id is mandatory
+    If not group id is configured, org.apache.kafka.common.errors.InvalidGroupIdException
