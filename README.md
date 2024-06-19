@@ -146,3 +146,8 @@
     
 ### Group Id is mandatory
     If not group id is configured, org.apache.kafka.common.errors.InvalidGroupIdException
+
+### Consumer Polls topics to retrieve messages
+    Kafka consumers use a polling mechanism to fetch messages from topics by calling the poll() method, 
+    which retrieves a batch of records from the Kafka brokers.
+    
