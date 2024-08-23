@@ -15,14 +15,18 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.KafkaTemplate;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 @SpringBootApplication
-public class KafkaMultiListenerApplication {
+public class KafkaJsonNodeApplication {
 	
     public static void main(String[] args) throws Exception {
 
-        ConfigurableApplicationContext context = SpringApplication.run(KafkaMultiListenerApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(KafkaJsonNodeApplication.class, args);
         
-        String topic = "multitype";
+        String topic = "myjsonnodetopic";
         
         MessageProducer producer = context.getBean(MessageProducer.class, topic);
         producer.sendMessages();
@@ -60,7 +64,7 @@ public class KafkaMultiListenerApplication {
     public static class MessageProducer {
 
         @Autowired
-        private KafkaTemplate<String, Greeting> greetingKafkaTemplate;
+        private KafkaTemplate<String, JsonNode> greetingKafkaTemplate;
         
         private String topic;
 
@@ -69,7 +73,10 @@ public class KafkaMultiListenerApplication {
         }
         
         public void sendMessages() {
-        	greetingKafkaTemplate.send(topic, new Greeting("Greetings", "World!"));
+        	ObjectNode node = JsonNodeFactory.instance.objectNode();
+        	node.put("msg", "Greetings");
+        	node.put("name", "World!");
+        	greetingKafkaTemplate.send(topic, node);
         }
 
     }

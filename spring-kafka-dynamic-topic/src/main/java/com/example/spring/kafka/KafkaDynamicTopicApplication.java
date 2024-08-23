@@ -1,10 +1,8 @@
 package com.example.spring.kafka;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 import org.apache.kafka.clients.admin.AdminClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +15,14 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.KafkaTemplate;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
 @SpringBootApplication
-public class KafkaMultiListenerApplication {
+public class KafkaDynamicTopicApplication {
 	
     public static void main(String[] args) throws Exception {
 
-        ConfigurableApplicationContext context = SpringApplication.run(KafkaMultiListenerApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(KafkaDynamicTopicApplication.class, args);
         
-        String topic = "multitype";
+        String topic = "mydynamictopic";
         
         MessageProducer producer = context.getBean(MessageProducer.class, topic);
         producer.sendMessages();
@@ -66,7 +60,7 @@ public class KafkaMultiListenerApplication {
     public static class MessageProducer {
 
         @Autowired
-        private KafkaTemplate<String, String> greetingKafkaTemplate;
+        private KafkaTemplate<String, Greeting> greetingKafkaTemplate;
         
         private String topic;
 
@@ -75,13 +69,13 @@ public class KafkaMultiListenerApplication {
         }
         
         public void sendMessages() {
-
-        	String jsonFile = "/my_res.json";
-        	InputStream inputStream = MessageProducer.class.getResourceAsStream(jsonFile);
-        	Scanner s = new Scanner(inputStream).useDelimiter("\\A");
-        	String result = s.hasNext() ? s.next() : "";
         	
-        	greetingKafkaTemplate.send(topic, result);
+        	System.out.println("Producer sent to topic:" + topic);
+        	Greeting greeting =  new Greeting("Greetings", "World!");
+        	
+        	greetingKafkaTemplate.send(topic, greeting);
+
+        	System.out.println("Producer sent message:" + greeting);
         }
 
     }

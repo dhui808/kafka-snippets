@@ -1,8 +1,10 @@
 package com.example.spring.kafka;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.apache.kafka.clients.admin.AdminClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +22,13 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @SpringBootApplication
-public class KafkaMultiListenerApplication {
+public class KafkaJsonStringApplication {
 	
     public static void main(String[] args) throws Exception {
 
-        ConfigurableApplicationContext context = SpringApplication.run(KafkaMultiListenerApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(KafkaJsonStringApplication.class, args);
         
-        String topic = "multitype";
+        String topic = "myjsonstringtopic";
         
         MessageProducer producer = context.getBean(MessageProducer.class, topic);
         producer.sendMessages();
@@ -64,7 +66,7 @@ public class KafkaMultiListenerApplication {
     public static class MessageProducer {
 
         @Autowired
-        private KafkaTemplate<String, JsonNode> greetingKafkaTemplate;
+        private KafkaTemplate<String, String> greetingKafkaTemplate;
         
         private String topic;
 
@@ -73,10 +75,17 @@ public class KafkaMultiListenerApplication {
         }
         
         public void sendMessages() {
-        	ObjectNode node = JsonNodeFactory.instance.objectNode();
-        	node.put("msg", "Greetings");
-        	node.put("name", "World!");
-        	greetingKafkaTemplate.send(topic, node);
+
+        	String jsonFile = "/my_res.json";
+        	InputStream inputStream = MessageProducer.class.getResourceAsStream(jsonFile);
+        	Scanner s = new Scanner(inputStream).useDelimiter("\\A");
+        	String result = s.hasNext() ? s.next() : "";
+        	
+        	System.out.println("Producer sent to topic:" + topic);
+        	
+        	greetingKafkaTemplate.send(topic, result);
+        	
+        	System.out.println("Producer sent message:" + result);
         }
 
     }
